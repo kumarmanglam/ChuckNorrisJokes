@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ChuckNorrisJokes/static/css/main.335d6f12.css",
+    "main.js": "/ChuckNorrisJokes/static/js/main.38758f9f.js",
+    "static/js/787.0420ccf9.chunk.js": "/ChuckNorrisJokes/static/js/787.0420ccf9.chunk.js",
+    "index.html": "/ChuckNorrisJokes/index.html",
+    "main.335d6f12.css.map": "/ChuckNorrisJokes/static/css/main.335d6f12.css.map",
+    "main.38758f9f.js.map": "/ChuckNorrisJokes/static/js/main.38758f9f.js.map",
+    "787.0420ccf9.chunk.js.map": "/ChuckNorrisJokes/static/js/787.0420ccf9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.335d6f12.css",
+    "static/js/main.38758f9f.js"
+  ]
+}
