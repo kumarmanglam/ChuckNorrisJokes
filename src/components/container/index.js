@@ -42,19 +42,22 @@ function Container() {
   }
 
   async function getJoke(category) {
-    try {
-      setIsFetching(true);
-      const response = await fetch(
-        `https://api.chucknorris.io/jokes/random?category=${category}`
-      );
-      const data = await response.json();
-      // console.log(data.value);
-      setJoke(data.value);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsFetching(false);
-    }
+    setIsFetching(true);
+    setJoke("");
+    setTimeout(async () => {
+      try {
+        const response = await fetch(
+          `https://api.chucknorris.io/jokes/random?category=${category}`
+        );
+        const data = await response.json();
+        // console.log(data.value);
+        setJoke(data.value);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsFetching(false);
+      }
+    }, 180);
   }
 
   return (
