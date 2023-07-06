@@ -9,12 +9,19 @@ function Container() {
   const [topicList, setTopicList] = useState([]);
   const [isListReceived, setIsListReceived] = useState(false);
   const [joke, setJoke] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
 
   async function getCategories() {
-    const response = await fetch("https://api.chucknorris.io/jokes/categories");
-    const data = await response.json();
-    setTopicList(data);
-    setIsListReceived(true);
+    try {
+      const response = await fetch(
+        "https://api.chucknorris.io/jokes/categories"
+      );
+      const data = await response.json();
+      setTopicList(data);
+      setIsListReceived(true);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -30,17 +37,24 @@ function Container() {
     setIsModalOpen(false);
   }
   function getNextJoke(label) {
-    console.log(label);
+    // console.log(label);
     getJoke(label);
   }
 
   async function getJoke(category) {
-    const response = await fetch(
-      `https://api.chucknorris.io/jokes/random?category=${category}`
-    );
-    const data = await response.json();
-    console.log(data.value);
-    setJoke(data.value);
+    try {
+      setIsFetching(true);
+      const response = await fetch(
+        `https://api.chucknorris.io/jokes/random?category=${category}`
+      );
+      const data = await response.json();
+      // console.log(data.value);
+      setJoke(data.value);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsFetching(false);
+    }
   }
 
   return (
@@ -58,6 +72,7 @@ function Container() {
           label={modalLabel}
           joke={joke}
           closeModal={() => closeModal()}
+          isFetching={isFetching}
         />
       )}
     </div>
